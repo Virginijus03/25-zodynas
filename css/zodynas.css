@@ -1,0 +1,97 @@
+
+@import './3rd-party/font-awesome.min.css';
+
+
+
+
+
+body {
+  background-color: #F9D4AF;
+}
+
+h1 {
+  display: inline-block;
+  position: absolute;
+  top: 10%;
+  left: 47%;
+}
+.zodynas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 140px 20px;
+  color: #fff;
+}
+.zodziai {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 30px 40px;
+  border: 1px solid #ccc;
+  width: 1000px;
+  max-width: 90%;
+  font-size: 30px;
+  background-color: #BE6B2A;
+  
+
+}
+form > label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+label > input {
+  height: 40px;
+  width: 250px;
+  font-size: 80%;
+  padding:0px 25px;
+}
+form > button {
+  display: inline;
+  height: 50px;
+  width: 150px;
+  margin-top: 32px;
+  background-color:green;
+  color: #fff;
+  font-size: 20px;
+}
+form > .reset {
+  background-color: #FF6A00;
+}
+h2 {
+  font-size: 35px;
+  margin-top: 50px;
+  color: #894D1F;
+}
+.hide {
+  display: flex;
+  gap: 20px;
+}
+.hide > input {
+  color: #FF6A00;
+  height: 50px;
+}
+.hide > .button {
+  display: flex;
+  justify-content:flex-end;
+  gap: 5px;
+}
+.button > .fa-trash{
+  background-color: red;
+  height: 50px;
+  width: 70px;
+  border-radius: 10px;
+}
+ 
+.button > .fa-pencil{
+  background-color:blue;
+  height: 50px;
+  width: 70px;
+  border-radius: 10px;
+}
+
