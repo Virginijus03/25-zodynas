@@ -3,6 +3,15 @@ class Zodynas {
         this.IDselector = IDselector;
 
         this.DOM = null;
+        this.listDOM = null;
+
+        this.newMessageDOM = null;
+        this.buttonSaveDOM = null;
+
+        this.AnewMessageDOM = null;
+        this.LnewMessageDOM = null;
+        this.messages = [];
+
         this.init();
     }
     init() {
@@ -34,11 +43,11 @@ class Zodynas {
                  <h1>Žodynas</h1>
                  <div class="kalba angliskai">
                      <label for="Anew_text">Anglų</label>
-                     <input id="Anew_text" type="text">
+                     <input id="Anew_text" type="text" value="">
                  </div>
                  <div class="kalba lietuviskai">
                      <label for="Lnew_text">Lietuvių</label>
-                     <input id="Lnew_text" type="text">
+                     <input id="Lnew_text" type="text" value="">
                  </div>
                  <div class="buttons">
                    <button class="btn save" type="submit">Save</button>
@@ -50,22 +59,24 @@ class Zodynas {
         return `<div class="pildoma"></div>`;
     }
 
-    renderTask(id, text) {
-        if (typeof text !== 'string' ||
-            text === '') {
-            return '';
-        }
+    renderTask(id, enText, ltText) {
+        // if (typeof text !== 'string' ||
+        //     text === '') {
+        //     return '';
+        // }
         const HTML = ` <h2 class="save">Išsaugoti Žodžiai</h2>
                         <div id="task_${id}" class="task">
-                           <div class="laukas english"></div>
-                           <div class="laukas lithuanian"></div>
+                           <div class="laukas english">${enText}</div>
+                           <div class="laukas lithuanian">${ltText}</div>
                              <div class="buttons">
                                 <button class="fa fa-pencil"></button>
                                 <button class="fa fa-trash"></button>
                              </div>
                         </div>`;
-        this.listDOM.insertADjacentHTML('afterbegin', HTML);
+        this.listDOM.insertAdjacentHTML('afterbegin', HTML);
         const taskDOM = this.listDOM.querySelector('.task');
+        const editDOM = taskDOM.querySelector('.fa-pencil');
+        const deleteDOM = taskDOM.querySelector('.fa-trash');
     }
     render() {
         let HTML = '';
@@ -74,18 +85,36 @@ class Zodynas {
         this.DOM.innerHTML = HTML;
 
         this.listDOM = this.DOM.querySelector('.pildoma');
-        console.log(this.listDOM);
+        this.buttonSaveDOM = document.querySelector('.btn.save');
+        this.AnewMessageDOM = document.getElementById('Anew_text');
+        this.LnewMessageDOM = document.getElementById('Lnew_text');
+
+
+
+
     }
-    addEvents()
+    addEvents() {
+        this.buttonSaveDOM.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const angliskasZodis = this.AnewMessageDOM.value;
+            const lietuviskasZodis = this.LnewMessageDOM.value;
+
+            if (angliskasZodis === '' || lietuviskasZodis === '') {
+                return false;
+            }
+            this.messages.push({
+                id: ++this.latestUsedID,
+                angliskasZodis: angliskasZodis,
+                lietuviskasZodis: lietuviskasZodis
+            })
+
+            this.renderTask(this.latestUsedID, angliskasZodis, lietuviskasZodis);
+
+        })
+    }
 
 }
-
-
-
-
-
-
-
 
 
 
